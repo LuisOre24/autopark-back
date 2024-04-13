@@ -1,23 +1,14 @@
-package com.cibertec.autoparkback.model;
+package com.cibertec.autoparkback.dto;
 
 import jakarta.persistence.*;
 
-@Entity
-@Table(name = "tarifario")
 public class Tarifario {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Integer idtarifa;
-
-    @Column(name = "descripcion", length = 50, nullable = false)
     private String descripcion;
-    @ManyToOne
-    @JoinColumn(name = "id_tipo_vehiculo", nullable = false)
     private TipoVehiculo tipoVehiculo;
-    @Column(name = "monto", precision = 2, nullable = false)
     private double monto;
-
     public Integer getIdtarifa() {
         return idtarifa;
     }
