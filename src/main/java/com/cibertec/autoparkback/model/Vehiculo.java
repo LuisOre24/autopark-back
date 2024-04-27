@@ -3,7 +3,7 @@ package com.cibertec.autoparkback.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "vehiculo")
+@Table(name = "vehiculos")
 public class Vehiculo {
 
     @Id

@@ -3,23 +3,26 @@ package com.cibertec.autoparkback.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "tipo_vehiculos")
-public class TipoVehiculo {
-
+@Table(name = "roles")
+public class Rol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idTipoVehiculo;
-    @Column(name = "descripcion", length = 50)
-    private String descripcion;
-    @Column(name = "estado")
-    private boolean estado;
+    @Column(name = "id_rol")
+    private Integer idRol;
 
-    public Integer getIdTipoVehiculo() {
-        return idTipoVehiculo;
+    @Column(name = "descripcion", length = 80)
+    private String descripcion;
+
+    @Column(name = "estado")
+    private  boolean estado;
+
+
+    public Integer getIdRol() {
+        return idRol;
     }
 
-    public void setIdTipoVehiculo(Integer idTipoVehiculo) {
-        this.idTipoVehiculo = idTipoVehiculo;
+    public void setIdRol(Integer idRol) {
+        this.idRol = idRol;
     }
 
     public String getDescripcion() {
@@ -37,4 +40,5 @@ public class TipoVehiculo {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
+
 }
