@@ -12,5 +12,5 @@ public interface VehiculoService {
     VehiculoDTO obtenerVehiculoPorID(Integer id);
     VehiculoDTO registrarVehiculo(VehiculoCreateDTO vehiculoCreateDTO);
     VehiculoDTO actualizarVehiculo(VehiculoUpdateDTO vehiculoUpdateDTO);
-    HashMap eliminarVehiculo(Integer id);
+    String eliminarVehiculo(Integer id);
 }

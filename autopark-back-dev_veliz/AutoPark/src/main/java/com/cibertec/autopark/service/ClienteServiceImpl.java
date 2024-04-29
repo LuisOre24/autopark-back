@@ -58,12 +58,11 @@ public class ClienteServiceImpl implements ClienteService{
     }
 
     @Override
-    public ClienteDTO eliminarCliente(long id) {
+    public String eliminarCliente(long id) {
         Optional<Cliente> vehiculoOptional= clienteRepository.findById(id);
         if(vehiculoOptional.isPresent()){
-            ClienteDTO clienteDTO=ClienteMapper.instancia.clienteAClienteDTO(vehiculoOptional.get());
             clienteRepository.delete(vehiculoOptional.get());
-            return clienteDTO;
+            return "Registro eliminado";
         }else {
             throw new NoSuchElementException("No se pudo realizar la eliminación para el ID proporcionado");
         }

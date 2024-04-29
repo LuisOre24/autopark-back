@@ -53,15 +53,14 @@ public class VehiculoServiceImpl implements VehiculoService{
     }
 
     @Override
-    public HashMap eliminarVehiculo(Integer id) {
+    public String eliminarVehiculo(Integer id) {
         Optional<Vehiculo> vehiculoOptional = vehiculoRepository.findById(id);
-        HashMap hashMap = new HashMap();
+
         if (vehiculoOptional.isPresent()) {
             vehiculoRepository.delete(vehiculoOptional.get());
-            hashMap.put("mensaje","Registro Eliminado");
+            return "Registro eliminado";
         } else {
-            hashMap.put("mensaje","No se pudo realizar la eliminación");
+            throw new NoSuchElementException("No se pudo realizar la eliminacion por ID");
         }
-        return hashMap;
     }
 }

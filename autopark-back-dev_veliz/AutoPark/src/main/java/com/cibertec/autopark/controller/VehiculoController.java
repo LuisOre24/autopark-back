@@ -48,7 +48,7 @@ public class VehiculoController {
 
     @Operation(summary = "Endpoint que  permite eliminar un vehiculo por ID", description = "Endpoint que  permite eliminar un vehiculo por ID")
     @DeleteMapping("/vehiculos/{vehiculoId}")
-    public ResponseEntity<?> eliminarVehiculo(@PathVariable("vehiculoId") Integer vehiculoId) {
+    public ResponseEntity<String> eliminarVehiculo(@PathVariable("vehiculoId") Integer vehiculoId) {
         return new ResponseEntity<>( vehiculoService.eliminarVehiculo(vehiculoId),HttpStatus.OK);
     }
 }

@@ -18,6 +18,7 @@ public class Vehiculo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Integer id;
 
     @Column(name = "placa", length = 8)

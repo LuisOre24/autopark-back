@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api")
 public class ClienteController {
@@ -40,7 +40,7 @@ public class ClienteController {
     }
 
     @DeleteMapping("/clientes/{clienteId}")
-    public ResponseEntity<ClienteDTO> eliminarCliente(@PathVariable("clienteId") long clienteId) {
+    public ResponseEntity<String> eliminarCliente(@PathVariable("clienteId") long clienteId) {
         return new ResponseEntity<>( clienteService.eliminarCliente(clienteId),HttpStatus.OK);
     }
 }

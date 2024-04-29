@@ -19,6 +19,7 @@ import java.util.Set;
 public class Parqueo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JoinColumn(name="id_parqueo")
     private Long id;
 
     @Column(name="fechaParqueo", nullable = false)
