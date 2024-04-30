@@ -3,7 +3,6 @@ package com.cibertec.autopark.controller;
 import com.cibertec.autopark.dtos.MarcaCreateDTO;
 import com.cibertec.autopark.dtos.MarcaDTO;
 import com.cibertec.autopark.dtos.MarcaUpdateDTO;
-import com.cibertec.autopark.repository.MarcaRepository;
 import com.cibertec.autopark.service.MarcaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

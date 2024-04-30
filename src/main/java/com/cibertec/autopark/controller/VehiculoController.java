@@ -4,7 +4,6 @@ import com.cibertec.autopark.dtos.VehiculoCreateDTO;
 import com.cibertec.autopark.dtos.VehiculoDTO;
 import com.cibertec.autopark.dtos.VehiculoUpdateDTO;
 import com.cibertec.autopark.service.VehiculoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

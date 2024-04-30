@@ -1,7 +1,5 @@
 package com.cibertec.autopark.dtos;
 
-import com.cibertec.autopark.model.Cliente;
-import com.cibertec.autopark.model.ParqueoDetalle;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,6 +1,5 @@
 package com.cibertec.autopark.dtos;
 
-import jakarta.persistence.Column;
 import lombok.Getter;
 import lombok.Setter;
 

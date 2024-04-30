@@ -39,4 +39,5 @@ public class Cliente {
 
     @Column(length = 200, nullable = false)
     private String email;
+
 }
