@@ -15,30 +15,6 @@ INSERT INTO autoparkdb.tb_marca (id_marca, des_marca) VALUES
 (null, 'chevrolet'),
 (null, 'honda');
 
-#INSERT VEHICULO
-INSERT INTO autoparkdb.tb_vehiculo(id, placa, color, id_tipo_vehiculo, id_marca)
-VALUES (null, 'ABC123', 'Rojo', '1', '2');
-INSERT INTO autoparkdb.tb_vehiculo (id, placa, color, id_tipo_vehiculo, id_marca) 
-VALUES (null, 'DEF456', 'Azul', '1', '1');
-INSERT INTO autoparkdb.tb_vehiculo (id, placa, color, id_tipo_vehiculo, id_marca) 
-VALUES (null, 'GHI789', 'Blanco', '2', '2');
-INSERT INTO autoparkdb.tb_vehiculo (id, placa, color, id_tipo_vehiculo, id_marca) 
-VALUES (null, 'JKL012', 'Negro', '3', '3');
-INSERT INTO autoparkdb.tb_vehiculo (id, placa, color, id_tipo_vehiculo, id_marca) 
-VALUES (null, 'MNO345', 'Gris', '1', '1');
-INSERT INTO autoparkdb.tb_vehiculo (id, placa, color, id_tipo_vehiculo, id_marca) 
-VALUES (null, 'PQR678', 'Rojo', '2', '2');
-INSERT INTO autoparkdb.tb_vehiculo (id, placa, color, id_tipo_vehiculo, id_marca) 
-VALUES (null, 'STU901', 'Verde', '3', '3');
-INSERT INTO autoparkdb.tb_vehiculo (id, placa, color, id_tipo_vehiculo, id_marca) 
-VALUES (null, 'VWX234', 'Azul', '1', '1');
-INSERT INTO autoparkdb.tb_vehiculo (id, placa, color, id_tipo_vehiculo, id_marca) 
-VALUES (null, 'YZA567', 'Blanco', '2', '2');
-INSERT INTO autoparkdb.tb_vehiculo (id, placa, color, id_tipo_vehiculo, id_marca) 
-VALUES (null, 'BCD890', 'Negro', '3', '3');
-INSERT INTO autoparkdb.tb_vehiculo (id, placa, color, id_tipo_vehiculo, id_marca) 
-VALUES (null, 'EFG123', 'Gris', '1', '1');
-
 #INSERT CLIENTE
 INSERT INTO autoparkdb.tb_cliente(id, ape_paterno, ape_materno, nombres, dni, email, fecha_nacimiento)
 VALUES (null, 'López', 'García', 'Juan', '12345678', 'juanlopez@example.com', '1980-01-10');
@@ -58,6 +34,30 @@ INSERT INTO autoparkdb.tb_cliente(id, ape_paterno, ape_materno, nombres, dni, em
 VALUES (null, 'Fernández', 'Hernández', 'Sara', '01234567', 'sarafernandez@example.com', '1987-08-17');
 INSERT INTO autoparkdb.tb_cliente(id, ape_paterno, ape_materno, nombres, dni, email, fecha_nacimiento)
 VALUES (null, 'González', 'Martínez', 'Ricardo', '78901234', 'ricardogonzalez@example.com', '1988-09-18');
+
+#INSERT VEHICULO
+INSERT INTO autoparkdb.tb_vehiculo(id, placa, color, id_tipo_vehiculo, id_marca, id_cliente)
+VALUES (null, 'ABC123', 'Rojo', '1', '2','1');
+INSERT INTO autoparkdb.tb_vehiculo (id, placa, color, id_tipo_vehiculo, id_marca, id_cliente) 
+VALUES (null, 'DEF456', 'Azul', '1', '1','2');
+INSERT INTO autoparkdb.tb_vehiculo (id, placa, color, id_tipo_vehiculo, id_marca, id_cliente) 
+VALUES (null, 'GHI789', 'Blanco', '2', '2','3');
+INSERT INTO autoparkdb.tb_vehiculo (id, placa, color, id_tipo_vehiculo, id_marca, id_cliente) 
+VALUES (null, 'JKL012', 'Negro', '3', '3','4');
+INSERT INTO autoparkdb.tb_vehiculo (id, placa, color, id_tipo_vehiculo, id_marca, id_cliente) 
+VALUES (null, 'MNO345', 'Gris', '1', '1','5');
+INSERT INTO autoparkdb.tb_vehiculo (id, placa, color, id_tipo_vehiculo, id_marca, id_cliente) 
+VALUES (null, 'PQR678', 'Rojo', '2', '2','6');
+INSERT INTO autoparkdb.tb_vehiculo (id, placa, color, id_tipo_vehiculo, id_marca, id_cliente) 
+VALUES (null, 'STU901', 'Verde', '3', '3','7');
+INSERT INTO autoparkdb.tb_vehiculo (id, placa, color, id_tipo_vehiculo, id_marca, id_cliente) 
+VALUES (null, 'VWX234', 'Azul', '1', '1','8');
+INSERT INTO autoparkdb.tb_vehiculo (id, placa, color, id_tipo_vehiculo, id_marca, id_cliente) 
+VALUES (null, 'YZA567', 'Blanco', '2', '2','9');
+INSERT INTO autoparkdb.tb_vehiculo (id, placa, color, id_tipo_vehiculo, id_marca, id_cliente) 
+VALUES (null, 'BCD890', 'Negro', '3', '3','1');
+INSERT INTO autoparkdb.tb_vehiculo (id, placa, color, id_tipo_vehiculo, id_marca, id_cliente) 
+VALUES (null, 'EFG123', 'Gris', '1', '1','2');
 
 #INSERT PARQUEO DETALLE
 INSERT INTO autoparkdb.tb_parqueo_detalle(id, id_vehiculo, cantidad, preciovta, importe, horaingreso, horasalida)
@@ -105,6 +105,4 @@ VALUES (null, '2024-04-29', '8');
 INSERT INTO autoparkdb.tb_parqueo (id, fecha_parqueo, id_cliente) 
 VALUES (null, '2024-04-29', '9');
 
-select * from tb_parqueo_detalle;
-select * from tb_parqueo;
 
