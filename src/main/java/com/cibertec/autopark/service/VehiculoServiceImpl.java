@@ -58,6 +58,7 @@ public class VehiculoServiceImpl implements IVehiculoService {
         }
     }
 
+    //METODO QUE PERMITE FORMATEAR LA PLACA QUE INGRESE SIN GUION Y VALIDA SI ES DE SOLO 6 CARACTERES PARA APLICARLA
     private String formatPlacaVehiculo(String placa){
         String neoPlaca = "";
         if(placa.length()<7) {

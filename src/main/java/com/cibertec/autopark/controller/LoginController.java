@@ -15,19 +15,23 @@ public class LoginController {
     @Autowired
     private UsuarioService authService;
 
-    @GetMapping("/login")
+    //METODO DE PRUEBA
+    /*@GetMapping("/login")
     public String login(){
         return "Login";
-    }
+    }*/
 
+
+    //METODO QUE RETORNA EL TOKEN NECESARIO PARA PODER ACCEDER A LAS DEMAS RUTAS
     @PostMapping("/signin")
     public ResponseEntity<JwtResponse> Authenticate(@RequestBody LoginRequest loginRequest){
         return new ResponseEntity<JwtResponse>(authService.login(loginRequest), HttpStatus.OK);
     }
 
-    @PostMapping("/register")
+    //METODO DE PRUEBA
+    /*@PostMapping("/register")
     public String register(){
         return "register";
-    }
+    }*/
 
 }
