@@ -3,7 +3,7 @@ package com.cibertec.autopark.controller;
 import com.cibertec.autopark.dtos.ParqueoCreateDTO;
 import com.cibertec.autopark.dtos.ParqueoDTO;
 import com.cibertec.autopark.dtos.ParqueoResponseDTO;
-import com.cibertec.autopark.service.ParqueoService;
+import com.cibertec.autopark.service.IParqueoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,20 +16,20 @@ import java.util.List;
 public class ParqueoController {
 
     @Autowired
-    private ParqueoService parqueoService;
+    private IParqueoService IParqueoService;
 
     @GetMapping("parqueos")
     public ResponseEntity<List<ParqueoDTO>> listarParqueos(){
-        return new ResponseEntity<>(parqueoService.listarParqueos(), HttpStatus.OK);
+        return new ResponseEntity<>(IParqueoService.listarParqueos(), HttpStatus.OK);
     }
 
     @GetMapping("/parqueos/{parqueoId}")
     public ResponseEntity<ParqueoDTO> obtenerParqueoPorId(@PathVariable("parqueoId") long parqueoId) {
-        return new ResponseEntity<>(parqueoService.obtenerParqueoPorID(parqueoId),HttpStatus.OK);
+        return new ResponseEntity<>(IParqueoService.obtenerParqueoPorID(parqueoId),HttpStatus.OK);
     }
 
     @PostMapping("parqueos")
     public ResponseEntity<ParqueoResponseDTO> registrarParqueo(@RequestBody ParqueoCreateDTO parqueoCreateDTO){
-        return new ResponseEntity<>(parqueoService.registrarParqueo(parqueoCreateDTO), HttpStatus.OK);
+        return new ResponseEntity<>(IParqueoService.registrarParqueo(parqueoCreateDTO), HttpStatus.OK);
     }
 }

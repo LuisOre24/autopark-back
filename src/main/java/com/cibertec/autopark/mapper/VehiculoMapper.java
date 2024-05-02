@@ -17,16 +17,24 @@ public interface VehiculoMapper {
 
     @Mapping(target = "tipoVehiculoDTO", source = "tipoVehiculo")
     @Mapping(target = "marcaDTO", source = "marca")
+    @Mapping(target = "clienteDTO", source = "cliente")
     VehiculoDTO vehiculoAVehiculoDTO(Vehiculo vehiculo);
+
     Vehiculo vehiculoDTOAVehiculo(VehiculoDTO vehiculoDTO);
 
     @Mapping(target = "tipoVehiculo", source = "tipoVehiculoDTO")
     @Mapping(target="marca", source = "marcaDTO")
+    @Mapping(target="cliente", source = "clienteDTO")
     Vehiculo vehiculoCreateDTOAVehiculo(VehiculoCreateDTO vehiculoCreateDTO);
 
     @Mapping(target="tipoVehiculo", source = "tipoVehiculoDTO")
     @Mapping(target="marca", source = "marcaDTO")
+    @Mapping(target = "cliente", source = "clienteDTO")
     Vehiculo vehiculoUpdateDTOAVehiculo(VehiculoUpdateDTO vehiculoUpdateDTO);
+
+    @Mapping(target = "tipoVehiculoDTO", source = "tipoVehiculo")
+    @Mapping(target = "marcaDTO", source = "marca")
+    @Mapping(target = "clienteDTO", source = "cliente")
     List<VehiculoDTO> listaVehiculoAListaVehiculoDTO (List<Vehiculo> listaVehiculo);
 
 }

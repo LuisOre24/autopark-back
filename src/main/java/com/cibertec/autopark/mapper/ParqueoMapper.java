@@ -20,6 +20,7 @@ public interface ParqueoMapper {
 
     @Mapping(target = "parqueoDetalleDTO", source = "parqueoDetalle",qualifiedByName ="mapParqueoDetalleToParqueoDetalleDTO" )
     @Mapping(target = "clienteDTO", source = "cliente") // Mapea el cliente
+    @Mapping(target = "usuarioDTO", source = "usuario") // Mapea el cliente
     ParqueoDTO parqueoAParqueoDTO(Parqueo parqueo);
 
 
@@ -37,10 +38,12 @@ public interface ParqueoMapper {
 
     @Mapping(target = "parqueoDetalleDTO", source = "parqueoDetalle", qualifiedByName ="mapParqueoDetalleToParqueoDetalleDTO" )
     @Mapping(target = "clienteDTO", source = "cliente")
+    @Mapping(target = "usuarioDTO", source = "usuario")
     List<ParqueoDTO> listaParqueoAListaParqueoDTO (List<Parqueo> listaParqueo);
 
     @Mapping(target = "parqueoDetalle", source = "parqueoDetalleCreateDTO", qualifiedByName ="mapParqueoDetalleCreateDTOToParqueoDetalle" )
     @Mapping(target = "cliente", source = "clienteDTO")
+    @Mapping(target = "usuario", source = "usuarioDTO")
     Parqueo parqueoCreateDTOAParqueo(ParqueoCreateDTO parqueoCreateDTO);
 
     @Named("mapParqueoDetalleCreateDTOToParqueoDetalle" )

@@ -1,5 +1,6 @@
 package com.cibertec.autopark.dtos;
 
+import com.cibertec.autopark.model.Estacionamiento;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,5 +18,6 @@ public class ParqueoDetalleDTO {
     private BigDecimal importe;
     private Date horaingreso;
     private Date horasalida;
+    private Estacionamiento estacionamiento;
 
 }

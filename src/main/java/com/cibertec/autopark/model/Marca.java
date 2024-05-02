@@ -19,7 +19,7 @@ public class Marca {
     @Column(name = "id_marca")
     private Integer id;
 
-    @Column(name = "des_marca", length = 50)
+    @Column(name = "des_marca", length = 50, unique = true)
     private String des_marca;
 
 }

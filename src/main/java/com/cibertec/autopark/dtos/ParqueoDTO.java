@@ -12,5 +12,6 @@ public class ParqueoDTO {
     private Long id;
     private Date fechaParqueo;
     private ClienteDTO clienteDTO;
+    private UsuarioDTO usuarioDTO;
     private Set<ParqueoDetalleDTO> parqueoDetalleDTO;
 }

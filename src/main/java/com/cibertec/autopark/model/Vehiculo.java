@@ -19,7 +19,7 @@ public class Vehiculo {
 
     private Integer id;
 
-    @Column(name = "placa", length = 8)
+    @Column(name = "placa", length = 8, nullable = false, unique = true)
     private String placa;
 
     @Column(name = "color")

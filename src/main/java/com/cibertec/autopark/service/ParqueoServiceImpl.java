@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 @Service
-public class ParqueoServiceImpl implements ParqueoService{
+public class ParqueoServiceImpl implements IParqueoService {
 
     @Autowired
     private ParqueoRepository parqueoRepository;

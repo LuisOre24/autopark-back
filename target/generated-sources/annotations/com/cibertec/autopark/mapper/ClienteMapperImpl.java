@@ -3,14 +3,16 @@ package com.cibertec.autopark.mapper;
 import com.cibertec.autopark.dtos.ClienteCreateDTO;
 import com.cibertec.autopark.dtos.ClienteDTO;
 import com.cibertec.autopark.dtos.ClienteUpdateDTO;
+import com.cibertec.autopark.dtos.TipoDocumentoDTO;
 import com.cibertec.autopark.model.Cliente;
+import com.cibertec.autopark.model.TipoDocumento;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-05-01T13:42:29-0500",
+    date = "2024-05-01T23:38:17-0500",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.11 (Eclipse Adoptium)"
 )
 public class ClienteMapperImpl implements ClienteMapper {
@@ -23,6 +25,7 @@ public class ClienteMapperImpl implements ClienteMapper {
 
         ClienteDTO clienteDTO = new ClienteDTO();
 
+        clienteDTO.setTipoDocumentoDTO( tipoDocumentoToTipoDocumentoDTO( cliente.getTipoDocumento() ) );
         clienteDTO.setId( cliente.getId() );
         clienteDTO.setDni( cliente.getDni() );
         clienteDTO.setNombres( cliente.getNombres() );
@@ -42,6 +45,7 @@ public class ClienteMapperImpl implements ClienteMapper {
 
         Cliente cliente = new Cliente();
 
+        cliente.setTipoDocumento( tipoDocumentoDTOToTipoDocumento( clienteDTO.getTipoDocumentoDTO() ) );
         cliente.setId( clienteDTO.getId() );
         cliente.setDni( clienteDTO.getDni() );
         cliente.setNombres( clienteDTO.getNombres() );
@@ -61,6 +65,7 @@ public class ClienteMapperImpl implements ClienteMapper {
 
         Cliente cliente = new Cliente();
 
+        cliente.setTipoDocumento( tipoDocumentoDTOToTipoDocumento( clienteCreateDTO.getTipoDocumentoDTO() ) );
         cliente.setDni( clienteCreateDTO.getDni() );
         cliente.setNombres( clienteCreateDTO.getNombres() );
         cliente.setApePaterno( clienteCreateDTO.getApePaterno() );
@@ -79,6 +84,7 @@ public class ClienteMapperImpl implements ClienteMapper {
 
         Cliente cliente = new Cliente();
 
+        cliente.setTipoDocumento( tipoDocumentoDTOToTipoDocumento( clienteUpdateDTO.getTipoDocumentoDTO() ) );
         cliente.setId( clienteUpdateDTO.getId() );
         cliente.setDni( clienteUpdateDTO.getDni() );
         cliente.setNombres( clienteUpdateDTO.getNombres() );
@@ -102,5 +108,31 @@ public class ClienteMapperImpl implements ClienteMapper {
         }
 
         return list;
+    }
+
+    protected TipoDocumentoDTO tipoDocumentoToTipoDocumentoDTO(TipoDocumento tipoDocumento) {
+        if ( tipoDocumento == null ) {
+            return null;
+        }
+
+        TipoDocumentoDTO tipoDocumentoDTO = new TipoDocumentoDTO();
+
+        tipoDocumentoDTO.setIdTipoDocumento( tipoDocumento.getIdTipoDocumento() );
+        tipoDocumentoDTO.setDescripcion( tipoDocumento.getDescripcion() );
+
+        return tipoDocumentoDTO;
+    }
+
+    protected TipoDocumento tipoDocumentoDTOToTipoDocumento(TipoDocumentoDTO tipoDocumentoDTO) {
+        if ( tipoDocumentoDTO == null ) {
+            return null;
+        }
+
+        TipoDocumento tipoDocumento = new TipoDocumento();
+
+        tipoDocumento.setIdTipoDocumento( tipoDocumentoDTO.getIdTipoDocumento() );
+        tipoDocumento.setDescripcion( tipoDocumentoDTO.getDescripcion() );
+
+        return tipoDocumento;
     }
 }

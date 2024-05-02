@@ -26,12 +26,24 @@ public class Usuario implements UserDetails {
 
     private String lastname;
 
-    //@ManyToMany(fetch = FetchType.EAGER)
-    //@JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "id_usuario") , inverseJoinColumns = @JoinColumn(name = "id_rol"))
+    @ManyToOne
+    @JoinColumn(name = "tipo_documento")
+    private TipoDocumento tipoDocumento;
+
+    @Column(name = "nro_documento", nullable = false, unique = true)
+    private String nroDocumento;
+
+    private String correo;
+
+    private String telefono;
+
     @ManyToOne
     @JoinColumn(name = "id_rol")
     private Rol rol;
+
+    @Column(name = "username", length = 50, unique = true)
     private String username;
+
     private String password;
 
 

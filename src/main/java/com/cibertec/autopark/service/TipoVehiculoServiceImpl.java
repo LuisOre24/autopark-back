@@ -14,7 +14,7 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
-public class TipoVehiculoServiceImpl implements TipoVehiculoService{
+public class TipoVehiculoServiceImpl implements ITipoVehiculoService {
 
     /*private final TipoVehiculoRepository tipoVehiculoRepository;
 

@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 @Service
-public class MarcaServiceImpl implements MarcaService{
+public class MarcaServiceImpl implements IMarcaService {
 
     @Autowired
     private MarcaRepository marcaRepository;

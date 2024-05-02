@@ -1,5 +1,6 @@
 package com.cibertec.autopark.dtos;
 
+import com.cibertec.autopark.model.TipoDocumento;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,6 +9,7 @@ import java.util.Date;
 @Setter
 public class ClienteCreateDTO {
     private String dni;
+    private TipoDocumentoDTO tipoDocumentoDTO;
     private String nombres;
     private String apePaterno;
     private String apeMaterno;
