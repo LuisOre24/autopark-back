@@ -19,7 +19,7 @@ public class UsuarioCreateDTO {
 
     private String telefono;
 
-    private Rol rol;
+    private RolDTO rolDTO;
 
     private String username;
 
