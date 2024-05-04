@@ -20,7 +20,11 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 8, nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "tipo_documento")
+    private TipoDocumento tipoDocumento;
+
+    @Column(length = 12, nullable = false)
     private String dni;
 
     @Column(length = 60, nullable = false)

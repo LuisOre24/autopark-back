@@ -5,9 +5,11 @@ import com.cibertec.autopark.dtos.ParqueoCreateDTO;
 import com.cibertec.autopark.dtos.ParqueoDTO;
 import com.cibertec.autopark.dtos.ParqueoDetalleCreateDTO;
 import com.cibertec.autopark.dtos.ParqueoDetalleDTO;
+import com.cibertec.autopark.dtos.UsuarioDTO;
 import com.cibertec.autopark.model.Cliente;
 import com.cibertec.autopark.model.Parqueo;
 import com.cibertec.autopark.model.ParqueoDetalle;
+import com.cibertec.autopark.model.Usuario;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -16,8 +18,8 @@ import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-04-29T16:37:11-0500",
-    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.10 (Oracle Corporation)"
+    date = "2024-05-01T23:38:17-0500",
+    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.11 (Eclipse Adoptium)"
 )
 public class ParqueoMapperImpl implements ParqueoMapper {
 
@@ -31,6 +33,7 @@ public class ParqueoMapperImpl implements ParqueoMapper {
 
         parqueoDTO.setParqueoDetalleDTO( parqueoDetalleSetToParqueoDetalleDTOSet( parqueo.getParqueoDetalle() ) );
         parqueoDTO.setClienteDTO( clienteToClienteDTO( parqueo.getCliente() ) );
+        parqueoDTO.setUsuarioDTO( usuarioToUsuarioDTO( parqueo.getUsuario() ) );
         parqueoDTO.setId( parqueo.getId() );
         parqueoDTO.setFechaParqueo( parqueo.getFechaParqueo() );
 
@@ -61,6 +64,7 @@ public class ParqueoMapperImpl implements ParqueoMapper {
 
         parqueo.setParqueoDetalle( parqueoDetalleCreateDTOSetToParqueoDetalleSet( parqueoCreateDTO.getParqueoDetalleCreateDTO() ) );
         parqueo.setCliente( clienteDTOToCliente( parqueoCreateDTO.getClienteDTO() ) );
+        parqueo.setUsuario( usuarioDTOToUsuario( parqueoCreateDTO.getUsuarioDTO() ) );
         parqueo.setFechaParqueo( parqueoCreateDTO.getFechaParqueo() );
 
         return parqueo;
@@ -97,6 +101,25 @@ public class ParqueoMapperImpl implements ParqueoMapper {
         return clienteDTO;
     }
 
+    protected UsuarioDTO usuarioToUsuarioDTO(Usuario usuario) {
+        if ( usuario == null ) {
+            return null;
+        }
+
+        UsuarioDTO usuarioDTO = new UsuarioDTO();
+
+        usuarioDTO.setIdUsuario( usuario.getIdUsuario() );
+        usuarioDTO.setName( usuario.getName() );
+        usuarioDTO.setLastname( usuario.getLastname() );
+        usuarioDTO.setNroDocumento( usuario.getNroDocumento() );
+        usuarioDTO.setCorreo( usuario.getCorreo() );
+        usuarioDTO.setTelefono( usuario.getTelefono() );
+        usuarioDTO.setUsername( usuario.getUsername() );
+        usuarioDTO.setPassword( usuario.getPassword() );
+
+        return usuarioDTO;
+    }
+
     protected Set<ParqueoDetalle> parqueoDetalleCreateDTOSetToParqueoDetalleSet(Set<ParqueoDetalleCreateDTO> set) {
         if ( set == null ) {
             return null;
@@ -126,5 +149,24 @@ public class ParqueoMapperImpl implements ParqueoMapper {
         cliente.setEmail( clienteDTO.getEmail() );
 
         return cliente;
+    }
+
+    protected Usuario usuarioDTOToUsuario(UsuarioDTO usuarioDTO) {
+        if ( usuarioDTO == null ) {
+            return null;
+        }
+
+        Usuario.UsuarioBuilder usuario = Usuario.builder();
+
+        usuario.idUsuario( usuarioDTO.getIdUsuario() );
+        usuario.name( usuarioDTO.getName() );
+        usuario.lastname( usuarioDTO.getLastname() );
+        usuario.nroDocumento( usuarioDTO.getNroDocumento() );
+        usuario.correo( usuarioDTO.getCorreo() );
+        usuario.telefono( usuarioDTO.getTelefono() );
+        usuario.username( usuarioDTO.getUsername() );
+        usuario.password( usuarioDTO.getPassword() );
+
+        return usuario.build();
     }
 }

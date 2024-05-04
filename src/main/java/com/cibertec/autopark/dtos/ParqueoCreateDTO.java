@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -13,5 +12,6 @@ public class ParqueoCreateDTO {
 
     private Date fechaParqueo;
     private ClienteDTO clienteDTO;
+    private UsuarioDTO usuarioDTO;
     private Set<ParqueoDetalleCreateDTO> parqueoDetalleCreateDTO;
 }

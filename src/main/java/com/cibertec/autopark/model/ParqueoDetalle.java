@@ -46,6 +46,10 @@ public class ParqueoDetalle {
     @DateTimeFormat(pattern = "HH:mm")
     private Date horasalida;
 
+    @ManyToOne
+    @JoinColumn(name = "id_estacionamiento")
+    private Estacionamiento estacionamiento;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_parqueo")
     private Parqueo parqueo;

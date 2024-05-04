@@ -34,4 +34,8 @@ public class Parqueo {
     @OneToMany(mappedBy = "parqueo")
     private Set<ParqueoDetalle> parqueoDetalle;
 
+    @ManyToOne
+    @JoinColumn(name = "id_usuario")
+    private Usuario usuario;
+
 }

@@ -1,10 +1,12 @@
 package com.cibertec.autopark.mapper;
 
+import com.cibertec.autopark.dtos.ClienteDTO;
 import com.cibertec.autopark.dtos.MarcaDTO;
 import com.cibertec.autopark.dtos.TipoVehiculoDTO;
 import com.cibertec.autopark.dtos.VehiculoCreateDTO;
 import com.cibertec.autopark.dtos.VehiculoDTO;
 import com.cibertec.autopark.dtos.VehiculoUpdateDTO;
+import com.cibertec.autopark.model.Cliente;
 import com.cibertec.autopark.model.Marca;
 import com.cibertec.autopark.model.TipoVehiculo;
 import com.cibertec.autopark.model.Vehiculo;
@@ -14,8 +16,8 @@ import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-04-29T16:37:11-0500",
-    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.10 (Oracle Corporation)"
+    date = "2024-05-02T00:28:47-0500",
+    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.11 (Eclipse Adoptium)"
 )
 public class VehiculoMapperImpl implements VehiculoMapper {
 
@@ -29,6 +31,7 @@ public class VehiculoMapperImpl implements VehiculoMapper {
 
         vehiculoDTO.setTipoVehiculoDTO( tipoVehiculoToTipoVehiculoDTO( vehiculo.getTipoVehiculo() ) );
         vehiculoDTO.setMarcaDTO( marcaToMarcaDTO( vehiculo.getMarca() ) );
+        vehiculoDTO.setClienteDTO( clienteToClienteDTO( vehiculo.getCliente() ) );
         vehiculoDTO.setId( vehiculo.getId() );
         vehiculoDTO.setPlaca( vehiculo.getPlaca() );
         vehiculoDTO.setColor( vehiculo.getColor() );
@@ -61,6 +64,7 @@ public class VehiculoMapperImpl implements VehiculoMapper {
 
         vehiculo.setTipoVehiculo( tipoVehiculoDTOToTipoVehiculo( vehiculoCreateDTO.getTipoVehiculoDTO() ) );
         vehiculo.setMarca( marcaDTOToMarca( vehiculoCreateDTO.getMarcaDTO() ) );
+        vehiculo.setCliente( clienteDTOToCliente( vehiculoCreateDTO.getClienteDTO() ) );
         vehiculo.setPlaca( vehiculoCreateDTO.getPlaca() );
         vehiculo.setColor( vehiculoCreateDTO.getColor() );
 
@@ -77,6 +81,7 @@ public class VehiculoMapperImpl implements VehiculoMapper {
 
         vehiculo.setTipoVehiculo( tipoVehiculoDTOToTipoVehiculo( vehiculoUpdateDTO.getTipoVehiculoDTO() ) );
         vehiculo.setMarca( marcaDTOToMarca( vehiculoUpdateDTO.getMarcaDTO() ) );
+        vehiculo.setCliente( clienteDTOToCliente( vehiculoUpdateDTO.getClienteDTO() ) );
         vehiculo.setId( vehiculoUpdateDTO.getId() );
         vehiculo.setPlaca( vehiculoUpdateDTO.getPlaca() );
         vehiculo.setColor( vehiculoUpdateDTO.getColor() );
@@ -124,6 +129,24 @@ public class VehiculoMapperImpl implements VehiculoMapper {
         return marcaDTO;
     }
 
+    protected ClienteDTO clienteToClienteDTO(Cliente cliente) {
+        if ( cliente == null ) {
+            return null;
+        }
+
+        ClienteDTO clienteDTO = new ClienteDTO();
+
+        clienteDTO.setId( cliente.getId() );
+        clienteDTO.setDni( cliente.getDni() );
+        clienteDTO.setNombres( cliente.getNombres() );
+        clienteDTO.setApePaterno( cliente.getApePaterno() );
+        clienteDTO.setApeMaterno( cliente.getApeMaterno() );
+        clienteDTO.setFechaNacimiento( cliente.getFechaNacimiento() );
+        clienteDTO.setEmail( cliente.getEmail() );
+
+        return clienteDTO;
+    }
+
     protected TipoVehiculo tipoVehiculoDTOToTipoVehiculo(TipoVehiculoDTO tipoVehiculoDTO) {
         if ( tipoVehiculoDTO == null ) {
             return null;
@@ -148,5 +171,23 @@ public class VehiculoMapperImpl implements VehiculoMapper {
         marca.setDes_marca( marcaDTO.getDes_marca() );
 
         return marca;
+    }
+
+    protected Cliente clienteDTOToCliente(ClienteDTO clienteDTO) {
+        if ( clienteDTO == null ) {
+            return null;
+        }
+
+        Cliente cliente = new Cliente();
+
+        cliente.setId( clienteDTO.getId() );
+        cliente.setDni( clienteDTO.getDni() );
+        cliente.setNombres( clienteDTO.getNombres() );
+        cliente.setApePaterno( clienteDTO.getApePaterno() );
+        cliente.setApeMaterno( clienteDTO.getApeMaterno() );
+        cliente.setFechaNacimiento( clienteDTO.getFechaNacimiento() );
+        cliente.setEmail( clienteDTO.getEmail() );
+
+        return cliente;
     }
 }

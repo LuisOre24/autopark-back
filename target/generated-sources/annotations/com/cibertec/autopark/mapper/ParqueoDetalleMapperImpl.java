@@ -9,8 +9,8 @@ import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-04-29T16:37:11-0500",
-    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.10 (Oracle Corporation)"
+    date = "2024-05-01T23:38:16-0500",
+    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.11 (Eclipse Adoptium)"
 )
 public class ParqueoDetalleMapperImpl implements ParqueoDetalleMapper {
 
@@ -41,6 +41,7 @@ public class ParqueoDetalleMapperImpl implements ParqueoDetalleMapper {
         parqueoDetalle.setImporte( pedDetalleCreateDTO.getImporte() );
         parqueoDetalle.setHoraingreso( pedDetalleCreateDTO.getHoraingreso() );
         parqueoDetalle.setHorasalida( pedDetalleCreateDTO.getHorasalida() );
+        parqueoDetalle.setEstacionamiento( pedDetalleCreateDTO.getEstacionamiento() );
 
         return parqueoDetalle;
     }
@@ -58,6 +59,7 @@ public class ParqueoDetalleMapperImpl implements ParqueoDetalleMapper {
         parqueoDetalleDTO.setImporte( parqueoDetalle.getImporte() );
         parqueoDetalleDTO.setHoraingreso( parqueoDetalle.getHoraingreso() );
         parqueoDetalleDTO.setHorasalida( parqueoDetalle.getHorasalida() );
+        parqueoDetalleDTO.setEstacionamiento( parqueoDetalle.getEstacionamiento() );
 
         return parqueoDetalleDTO;
     }

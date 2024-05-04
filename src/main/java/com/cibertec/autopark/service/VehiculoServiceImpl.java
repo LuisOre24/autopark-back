@@ -9,12 +9,13 @@ import com.cibertec.autopark.repository.VehiculoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
-public class VehiculoServiceImpl implements VehiculoService{
+public class VehiculoServiceImpl implements IVehiculoService {
 
     @Autowired
     private VehiculoRepository vehiculoRepository;
@@ -33,6 +34,7 @@ public class VehiculoServiceImpl implements VehiculoService{
     @Override
     public VehiculoDTO registrarVehiculo(VehiculoCreateDTO vehiculoCreateDTO) {
         Vehiculo vehiculo=VehiculoMapper.instancia.vehiculoCreateDTOAVehiculo(vehiculoCreateDTO);
+        vehiculo.setPlaca(formatPlacaVehiculo(vehiculo.getPlaca()));
         Vehiculo respuestaEntity=vehiculoRepository.save(vehiculo);
         return VehiculoMapper.instancia.vehiculoAVehiculoDTO(respuestaEntity);
     }
@@ -55,5 +57,17 @@ public class VehiculoServiceImpl implements VehiculoService{
         } else {
             throw new NoSuchElementException("No se pudo realizar la eliminacion por ID");
         }
+    }
+
+    //METODO QUE PERMITE FORMATEAR LA PLACA QUE INGRESE SIN GUION Y VALIDA SI ES DE SOLO 6 CARACTERES PARA APLICARLA
+    private String formatPlacaVehiculo(String placa){
+        String neoPlaca = "";
+        if(placa.length()<7) {
+            neoPlaca = (placa.substring(0, 3) + "-" + placa.substring(3)).toUpperCase();
+        }
+        else{
+            neoPlaca = placa.toUpperCase();
+        }
+    return neoPlaca;
     }
 }
