@@ -39,8 +39,9 @@ public class EstacionamientoController {
     }
 
     @DeleteMapping("/estacionamientos/{estacionamientoId}")
-    public ResponseEntity<String> eliminarEstacionamiento(@PathVariable("estacionamientoId") Integer estacionamientoId){
-        return new ResponseEntity<>(IEstacionamientoService.eliminarEstacionamiento(estacionamientoId), HttpStatus.OK);
+    public ResponseEntity<?> eliminarEstacionamiento(@PathVariable("estacionamientoId") Integer estacionamientoId){
+        String text = IEstacionamientoService.eliminarEstacionamiento(estacionamientoId);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

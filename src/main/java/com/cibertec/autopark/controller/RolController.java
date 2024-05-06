@@ -38,8 +38,9 @@ public class RolController {
     }
 
     @DeleteMapping("/roles/{marcaId}")
-    public ResponseEntity<String> eliminarRol(@PathVariable("marcaId") Integer marcaId){
-        return new ResponseEntity<>(IRolService.eliminarRol(marcaId), HttpStatus.OK);
+    public ResponseEntity<?> eliminarRol(@PathVariable("marcaId") Integer marcaId){
+        String text = IRolService.eliminarRol(marcaId);
+        return new ResponseEntity<>( HttpStatus.OK);
     }
 
 }

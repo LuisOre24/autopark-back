@@ -39,8 +39,9 @@ public class TipoDocumentoController {
     }
 
     @DeleteMapping("/tipodocumentos/{tipoDocumentoId}")
-    public ResponseEntity<String> eliminarTipoDocumento(@PathVariable("tipoDocumentoId") Integer tipoDocumentoId){
-        return new ResponseEntity<>(ITipoDocumentoService.eliminarTipoDocumento(tipoDocumentoId), HttpStatus.OK);
+    public ResponseEntity<?> eliminarTipoDocumento(@PathVariable("tipoDocumentoId") Integer tipoDocumentoId){
+        String text = ITipoDocumentoService.eliminarTipoDocumento(tipoDocumentoId);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

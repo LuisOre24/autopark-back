@@ -38,8 +38,9 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/usuarios/{usuarioId}")
-    public ResponseEntity<String> eliminarUsuario(@PathVariable("usuarioId") Integer usuarioId){
-        return new ResponseEntity<>(IUsuarioService.eliminarUsuario(usuarioId), HttpStatus.OK);
+    public ResponseEntity<?> eliminarUsuario(@PathVariable("usuarioId") Integer usuarioId){
+        String text = IUsuarioService.eliminarUsuario(usuarioId);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

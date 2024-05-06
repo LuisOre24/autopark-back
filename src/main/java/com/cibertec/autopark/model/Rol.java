@@ -14,6 +14,6 @@ public class Rol {
 
     @Column(name = "role", nullable = false, length = 20, unique = true)
     private String role;
-    private String status;
+    private boolean status;
 
 }

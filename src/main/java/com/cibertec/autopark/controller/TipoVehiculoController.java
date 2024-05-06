@@ -38,8 +38,9 @@ public class TipoVehiculoController {
     }
 
     @DeleteMapping("/tipoVehiculos/{tipoVehiculoId}")
-    public ResponseEntity<String> eliminarTipoVehiculo(@PathVariable("tipoVehiculoId") Integer tipoVehiculoId){
-        return new ResponseEntity<>(ITipoVehiculoService.eliminarTipoVehiculo(tipoVehiculoId), HttpStatus.OK);
+    public ResponseEntity<?> eliminarTipoVehiculo(@PathVariable("tipoVehiculoId") Integer tipoVehiculoId){
+        String text = ITipoVehiculoService.eliminarTipoVehiculo(tipoVehiculoId);
+        return new ResponseEntity<>( HttpStatus.OK);
     }
 
 }

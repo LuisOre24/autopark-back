@@ -40,7 +40,8 @@ public class ClienteController {
     }
 
     @DeleteMapping("/clientes/{clienteId}")
-    public ResponseEntity<String> eliminarCliente(@PathVariable("clienteId") long clienteId) {
-        return new ResponseEntity<>( IClienteService.eliminarCliente(clienteId),HttpStatus.OK);
+    public ResponseEntity<?> eliminarCliente(@PathVariable("clienteId") long clienteId) {
+        String text =IClienteService.eliminarCliente(clienteId);
+        return new ResponseEntity<>( HttpStatus.OK);
     }
 }

@@ -23,27 +23,23 @@ public class ClienteServiceImpl implements IClienteService {
     public List<ClienteDTO> listarClientes() {
         List<Cliente> lista = clienteRepository.findAll();
 
-        for (Cliente cli : lista) {
-            System.out.println(" "+ cli.getId().toString() +" --> "+ cli.getFechaNacimiento().toString());
-        }
-
         return ClienteMapper.instancia.listaClienteAListaClienteDTO( clienteRepository.findAll());
     }
 
     @Override
     public ClienteDTO obtenerClientePorID(long id) {
-        Optional<Cliente> vehiculo= clienteRepository.findById(id);
+        Optional<Cliente> cliente= clienteRepository.findById(id);
         ClienteDTO clienteDTO=null ;
-        if(vehiculo.isPresent()){
-            clienteDTO = ClienteMapper.instancia.clienteAClienteDTO(vehiculo.get());
+        if(cliente.isPresent()){
+            clienteDTO = ClienteMapper.instancia.clienteAClienteDTO(cliente.get());
         }
         return  clienteDTO;
     }
 
     @Override
-    public ClienteDTO registrarCliente(ClienteCreateDTO vehiculoCreateDTO) {
-        Cliente vehiculo=ClienteMapper.instancia.clienteCreateDTOACliente(vehiculoCreateDTO);
-        Cliente respuestaEntity=clienteRepository.save(vehiculo);
+    public ClienteDTO registrarCliente(ClienteCreateDTO clienteCreateDTO) {
+        Cliente cliente=ClienteMapper.instancia.clienteCreateDTOACliente(clienteCreateDTO);
+        Cliente respuestaEntity=clienteRepository.save(cliente);
         ClienteDTO respuestaDTO= ClienteMapper.instancia.clienteAClienteDTO(respuestaEntity);
         return respuestaDTO;
     }
@@ -51,17 +47,17 @@ public class ClienteServiceImpl implements IClienteService {
     @Override
     public ClienteDTO actualizarCliente(ClienteUpdateDTO clienteUpdateDTO) {
 
-        Cliente vehiculo=ClienteMapper.instancia.clienteUpdateDTOACliente(clienteUpdateDTO);
-        Cliente respuestaEntity=clienteRepository.save(vehiculo);
+        Cliente cliente=ClienteMapper.instancia.clienteUpdateDTOACliente(clienteUpdateDTO);
+        Cliente respuestaEntity=clienteRepository.save(cliente);
         ClienteDTO respuestaDTO= ClienteMapper.instancia.clienteAClienteDTO(respuestaEntity);
         return respuestaDTO;
     }
 
     @Override
     public String eliminarCliente(long id) {
-        Optional<Cliente> vehiculoOptional= clienteRepository.findById(id);
-        if(vehiculoOptional.isPresent()){
-            clienteRepository.delete(vehiculoOptional.get());
+        Optional<Cliente> clienteOptional= clienteRepository.findById(id);
+        if(clienteOptional.isPresent()){
+            clienteRepository.delete(clienteOptional.get());
             return "Registro eliminado";
         }else {
             throw new NoSuchElementException("No se pudo realizar la eliminación para el ID proporcionado");

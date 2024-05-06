@@ -36,11 +36,6 @@ public class Cliente {
     @Column(length = 200, nullable = false)
     private String apeMaterno;
 
-    @Column(name="fechaNacimiento", nullable = false)
-    @Temporal(value= TemporalType.DATE)
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
-    private Date fechaNacimiento;
-
     @Column(length = 200, nullable = false)
     private String email;
 

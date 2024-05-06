@@ -14,6 +14,5 @@ public class ClienteUpdateDTO {
     private String nombres;
     private String apePaterno;
     private String apeMaterno;
-    private Date fechaNacimiento;
     private String email;
 }

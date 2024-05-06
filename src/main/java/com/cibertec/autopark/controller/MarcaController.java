@@ -38,8 +38,9 @@ public class MarcaController {
     }
 
     @DeleteMapping("/marcas/{marcaId}")
-    public ResponseEntity<String> eliminarMarca(@PathVariable("marcaId") Integer marcaId){
-        return new ResponseEntity<>(IMarcaService.eliminarMarca(marcaId), HttpStatus.OK);
+    public ResponseEntity<?> eliminarMarca(@PathVariable("marcaId") Integer marcaId){
+        String text = IMarcaService.eliminarMarca(marcaId);
+        return new ResponseEntity<>( HttpStatus.OK);
     }
 
 }
