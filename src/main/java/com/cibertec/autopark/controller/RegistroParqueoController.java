@@ -43,9 +43,9 @@ public class RegistroParqueoController {
 
 
     @PutMapping("registroparqueos/salida")
-    public ResponseEntity<RegistroParqueoDTO> actualizarRegistroParqueo(@RequestBody RegistroParqueoUpdateDTO registroParqueoUpdateDTO){
+    public ResponseEntity<?> actualizarRegistroParqueo(@RequestBody RegistroParqueoUpdateDTO registroParqueoUpdateDTO){
         String rpta = IRegistroParqueoService.salidaVehiculo(registroParqueoUpdateDTO);
-        return new ResponseEntity(rpta,HttpStatus.OK);
+        return new ResponseEntity(HttpStatus.OK);
    }
 
     /*@DeleteMapping("/registroparqueos/{registroParqueoId}")

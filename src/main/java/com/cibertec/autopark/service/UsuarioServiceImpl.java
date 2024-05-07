@@ -36,8 +36,18 @@ public class UsuarioServiceImpl implements IUsuarioService{
     @Override
     public UsuarioDTO registrarUsuario(UsuarioCreateDTO usuarioCreateDTO) {
         Usuario usuario = UsuarioMapper.instancia.usuarioCreateDTOAUsuario(usuarioCreateDTO);
-        usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
-        Usuario respuestaEntity=usuarioRepository.save(usuario);
+        Usuario newUser = new Usuario();
+        newUser.setName(usuario.getName());
+        newUser.setLastname((usuario.getLastname()));
+        newUser.setCorreo(usuario.getCorreo());
+        newUser.setTelefono(usuario.getTelefono());
+        newUser.setTipoDocumento(usuario.getTipoDocumento());
+        newUser.setNroDocumento(usuario.getNroDocumento());
+        newUser.setUsername(usuario.getUsername());
+        newUser.setPassword(passwordEncoder.encode(usuario.getPassword()));
+        System.out.println(passwordEncoder.encode(usuario.getPassword()));
+        //usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
+        Usuario respuestaEntity=usuarioRepository.save(newUser);
         return UsuarioMapper.instancia.usuarioAUsuarioDTO(respuestaEntity);
     }
 

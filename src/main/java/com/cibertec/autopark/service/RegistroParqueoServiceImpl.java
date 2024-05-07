@@ -68,11 +68,12 @@ public class RegistroParqueoServiceImpl implements IRegistroParqueoService {
     @Transactional
     public String salidaVehiculo(RegistroParqueoUpdateDTO registro) {
         //LocalDateTime hora_ingreso = obtenerRegistroParqueoPorId(registro.getIdParqueo()).getHoraFechaIngreso();
-        RegistroParqueo reg = registroParqueoRepository.findById(registro.getIdParqueo()).orElse(null);
+        RegistroParqueo reg = registroParqueoRepository.findById(registro.getIdRegistroParqueo()).orElse(null);
         if(reg != null){
-            LocalDateTime hora_ingreso = reg.getHoraFechaIngreso(); //registro.getHoraFechaSalida()  -  registro.getHoraFechaSalida()
-            int totalHoras = calcularTotalHoras(hora_ingreso,LocalDateTime.now());
-            registroParqueoRepository.salidaVehiculo(registro.getIdParqueo(), LocalDateTime.now() ,totalHoras );
+            LocalDateTime hora_ingreso = reg.getHoraFechaIngreso(); //registro.getHoraFechaSalida()// -  registro.getHoraFechaSalida()
+            LocalDateTime hora_salida =  LocalDateTime.now();
+            int totalHoras = calcularTotalHoras(hora_ingreso,hora_salida);
+            registroParqueoRepository.salidaVehiculo(registro.getIdRegistroParqueo(), hora_salida ,totalHoras );
             return "REGISTRO EXITOSO";
         }
 

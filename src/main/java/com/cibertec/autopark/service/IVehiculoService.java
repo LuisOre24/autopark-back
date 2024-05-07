@@ -12,4 +12,5 @@ public interface IVehiculoService {
     VehiculoDTO registrarVehiculo(VehiculoCreateDTO vehiculoCreateDTO);
     VehiculoDTO actualizarVehiculo(VehiculoUpdateDTO vehiculoUpdateDTO);
     String eliminarVehiculo(Integer id);
+    VehiculoDTO buscarPlaca(String placa);
 }

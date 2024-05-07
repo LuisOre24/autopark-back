@@ -51,4 +51,11 @@ public class VehiculoController {
         String text = IVehiculoService.eliminarVehiculo(vehiculoId);
         return new ResponseEntity<>( HttpStatus.OK);
     }
+
+    @GetMapping("/vehiculos/buscar/{placa}")
+    public ResponseEntity<?> buscarPlaca(@PathVariable("placa") String placa){
+
+        VehiculoDTO vehiculo = IVehiculoService.buscarPlaca(placa);
+        return new ResponseEntity<>(vehiculo, HttpStatus.OK);
+    }
 }

@@ -3,6 +3,7 @@ package com.cibertec.autopark.mapper;
 import com.cibertec.autopark.dtos.RegistroParqueoCreateDTO;
 import com.cibertec.autopark.dtos.RegistroParqueoDTO;
 import com.cibertec.autopark.model.RegistroParqueo;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;

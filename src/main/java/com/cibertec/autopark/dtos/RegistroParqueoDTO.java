@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Data
 public class RegistroParqueoDTO {
 
-    private Integer idParqueo;
+    private Integer idRegistroParqueo;
 
     private VehiculoDTO vehiculoDTO;
 

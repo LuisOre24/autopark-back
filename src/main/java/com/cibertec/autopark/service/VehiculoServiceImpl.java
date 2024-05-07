@@ -41,7 +41,7 @@ public class VehiculoServiceImpl implements IVehiculoService {
 
     @Override
     public VehiculoDTO actualizarVehiculo(VehiculoUpdateDTO vehiculoUpdateDTO) {
-
+    System.out.print("ingresa a actualizar");
         Vehiculo vehiculo=VehiculoMapper.instancia.vehiculoUpdateDTOAVehiculo(vehiculoUpdateDTO);
         Vehiculo respuestaEntity=vehiculoRepository.save(vehiculo);
         return VehiculoMapper.instancia.vehiculoAVehiculoDTO(respuestaEntity);
@@ -59,15 +59,27 @@ public class VehiculoServiceImpl implements IVehiculoService {
         }
     }
 
+    @Override
+    public VehiculoDTO buscarPlaca(String placa) {
+        Vehiculo vehiculo = vehiculoRepository.buscarPlaca(placa);
+        VehiculoDTO neoVehiculo = VehiculoMapper.instancia.vehiculoAVehiculoDTO(vehiculo);
+        return neoVehiculo;
+    }
+
     //METODO QUE PERMITE FORMATEAR LA PLACA QUE INGRESE SIN GUION Y VALIDA SI ES DE SOLO 6 CARACTERES PARA APLICARLA
     private String formatPlacaVehiculo(String placa){
         String neoPlaca = "";
         if(placa.length()<7) {
+            System.out.print("antes de: "+ placa);
             neoPlaca = (placa.substring(0, 3) + "-" + placa.substring(3)).toUpperCase();
+            System.out.print("despues de: "+ placa);
         }
         else{
             neoPlaca = placa.toUpperCase();
+            System.out.print("else: "+ placa);
         }
     return neoPlaca;
     }
+
+
 }
