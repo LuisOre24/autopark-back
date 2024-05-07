@@ -36,25 +36,28 @@ public class UsuarioServiceImpl implements IUsuarioService{
     @Override
     public UsuarioDTO registrarUsuario(UsuarioCreateDTO usuarioCreateDTO) {
         Usuario usuario = UsuarioMapper.instancia.usuarioCreateDTOAUsuario(usuarioCreateDTO);
-        Usuario newUser = new Usuario();
-        newUser.setName(usuario.getName());
-        newUser.setLastname((usuario.getLastname()));
-        newUser.setCorreo(usuario.getCorreo());
-        newUser.setTelefono(usuario.getTelefono());
-        newUser.setTipoDocumento(usuario.getTipoDocumento());
-        newUser.setNroDocumento(usuario.getNroDocumento());
-        newUser.setUsername(usuario.getUsername());
-        newUser.setPassword(passwordEncoder.encode(usuario.getPassword()));
+        //Usuario newUser = new Usuario();
+        //newUser.setName(usuario.getName());
+        //newUser.setLastname((usuario.getLastname()));
+        //newUser.setCorreo(usuario.getCorreo());
+        //newUser.setTelefono(usuario.getTelefono());
+        //newUser.setTipoDocumento(usuario.getTipoDocumento());
+        //newUser.setNroDocumento(usuario.getNroDocumento());
+        //newUser.setUsername(usuario.getUsername());
+        //newUser.setPassword(passwordEncoder.encode(usuario.getPassword()));
         System.out.println(passwordEncoder.encode(usuario.getPassword()));
-        //usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
-        Usuario respuestaEntity=usuarioRepository.save(newUser);
+        usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
+        Usuario respuestaEntity=usuarioRepository.save(usuario);
+        System.out.println("entra en registrar");
         return UsuarioMapper.instancia.usuarioAUsuarioDTO(respuestaEntity);
     }
 
     @Override
     public UsuarioDTO actualizarUsuario(UsuarioDTO usuarioUpdateDTO) {
         Usuario usuario = UsuarioMapper.instancia.usuarioUpdateDTOAUsuario(usuarioUpdateDTO);
+        usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
         Usuario respuestaEntity=usuarioRepository.save(usuario);
+        System.out.println("entra en actualizar");
         return UsuarioMapper.instancia.usuarioAUsuarioDTO(respuestaEntity);
     }
 
