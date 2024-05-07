@@ -86,22 +86,28 @@ public class RegistroParqueoServiceImpl implements IRegistroParqueoService {
 
     private int calcularTotalHoras(LocalDateTime startDate,LocalDateTime endDate){
         int time = 0;
-
+        System.out.println("ingreso a metodo calcular horas");
         Period dias = Period.between(startDate.toLocalDate(),endDate.toLocalDate());
         int horas = endDate.getHour() - startDate.getHour();
         int minutos = endDate.getMinute() - startDate.getMinute();
 
-        if(dias.isZero()){
-            return horas;
-        }
-        else{
+        //if(dias.isZero()){
+        //    System.out.println("ingreso a zero días");
+        //    System.out.println("ingreso a zero días + " + horas);
+        //    return horas;
+        //}
+        //else{
             if(minutos > tolerancia){
                 time = (dias.getDays()*24) + horas + 1;
+                System.out.println("tolerancia");
+                System.out.println("-++- " + time);
             }
             else{
+                System.out.println("tolerancia no");
                 time = (dias.getDays()*24) + horas;
+                System.out.println("---- " + time);
             }
-        }
+        //}
         return time;
     }
 
