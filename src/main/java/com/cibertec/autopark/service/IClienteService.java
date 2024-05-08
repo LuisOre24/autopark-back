@@ -12,4 +12,6 @@ public interface IClienteService {
     ClienteDTO registrarCliente(ClienteCreateDTO clienteCreateDTO);
     ClienteDTO actualizarCliente(ClienteUpdateDTO clienteUpdateDTO);
     String eliminarCliente(long id);
+
+    ClienteDTO buscarClienteDocumento(String nroDocumento);
 }

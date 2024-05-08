@@ -3,12 +3,14 @@ package com.cibertec.autopark.dtos;
 import com.cibertec.autopark.model.Estacionamiento;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
 @Getter
 @Setter
+@ToString
 public class ParqueoDetalleCreateDTO {
 
     private VehiculoDTO vehiculoDTO;
@@ -17,6 +19,6 @@ public class ParqueoDetalleCreateDTO {
     private BigDecimal importe;
     private Date horaingreso;
     private Date horasalida;
-    private Estacionamiento estacionamiento;
+    private EstacionamientoDTO estacionamiento;
 
 }

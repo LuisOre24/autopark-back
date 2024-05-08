@@ -12,5 +12,6 @@ public interface ITarifarioService {
     TarifarioDTO registrarTarifario(TarifarioCreateDTO tarifarioCreateDTO);
     TarifarioDTO actualizarTarifario(TarifarioDTO tarifarioUpdateDTO);
     String eliminarTarifario(Integer id);
+    TarifarioDTO tarifaPorTVehiculo(Integer id);
     
 }

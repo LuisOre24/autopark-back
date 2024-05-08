@@ -6,6 +6,8 @@ import com.cibertec.autopark.dtos.ParqueoDetalleCreateDTO;
 import com.cibertec.autopark.dtos.ParqueoDetalleDTO;
 import com.cibertec.autopark.model.Parqueo;
 import com.cibertec.autopark.model.ParqueoDetalle;
+
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
@@ -18,21 +20,25 @@ public interface ParqueoMapper {
 
     ParqueoMapper instancia= Mappers.getMapper(ParqueoMapper.class);
 
-    @Mapping(target = "parqueoDetalleDTO", source = "parqueoDetalle",qualifiedByName ="mapParqueoDetalleToParqueoDetalleDTO" )
-    @Mapping(target = "clienteDTO", source = "cliente") // Mapea el cliente
-    @Mapping(target = "usuarioDTO", source = "usuario") // Mapea el cliente
+
+
+    @Mapping(target = "parqueoDetalleDTO", source = "parqueoDetalle", qualifiedByName ="mapParqueoDetalleToParqueoDetalleDTO")
+    @Mapping(target = "clienteDTO", source = "cliente")
+    @Mapping(target = "usuarioDTO", source = "usuario")
     ParqueoDTO parqueoAParqueoDTO(Parqueo parqueo);
 
-
     @Named("mapParqueoDetalleToParqueoDetalleDTO" )
-    default ParqueoDetalleDTO mapParqueoDetalleToParqueoDetalleDTO(ParqueoDetalle parqueoDetalle) {
-        ParqueoDetalleDTO detalle = new ParqueoDetalleDTO();
-        detalle.setId(parqueoDetalle.getId());
-        detalle.setCantidad(parqueoDetalle.getCantidad());
-        detalle.setPreciovta(parqueoDetalle.getPreciovta());
-        detalle.setImporte(parqueoDetalle.getImporte());
-        detalle.setVehiculoDTO(VehiculoMapper.instancia.vehiculoAVehiculoDTO(parqueoDetalle.getVehiculo()));
-        return detalle;
+    default ParqueoDetalleDTO mapParqueoDetalleToParqueoDetalleDTO(ParqueoDetalle detalle) {
+        ParqueoDetalleDTO detalleDTO = new ParqueoDetalleDTO();
+        detalleDTO.setId(detalle.getId());
+        detalleDTO.setCantidad(detalle.getCantidad());
+        detalleDTO.setPreciovta(detalle.getPreciovta());
+        detalleDTO.setImporte(detalle.getImporte());
+        detalleDTO.setHoraingreso(detalle.getHoraingreso());
+        detalleDTO.setHorasalida(detalle.getHorasalida());
+        detalleDTO.setEstacionamientoDTO(EstacionamientoMapper.instancia.estacionamientoAEstacionamientoDTO(detalle.getEstacionamiento()));
+        detalleDTO.setVehiculoDTO(VehiculoMapper.instancia.vehiculoAVehiculoDTO(detalle.getVehiculo()));
+        return detalleDTO;
     }
 
 
@@ -41,18 +47,43 @@ public interface ParqueoMapper {
     @Mapping(target = "usuarioDTO", source = "usuario")
     List<ParqueoDTO> listaParqueoAListaParqueoDTO (List<Parqueo> listaParqueo);
 
-    @Mapping(target = "parqueoDetalle", source = "parqueoDetalleCreateDTO", qualifiedByName ="mapParqueoDetalleCreateDTOToParqueoDetalle" )
-    @Mapping(target = "cliente", source = "clienteDTO")
-    @Mapping(target = "usuario", source = "usuarioDTO")
+    @Mapping(target = "parqueoDetalle", source = "parqueoDetalleDTO",qualifiedByName ="mapParqueoDetalleCreateDTOToParqueoDetalle" )
+    @Mapping(target = "cliente", source = "clienteDTO") // Mapea el cliente
+    @Mapping(target = "usuario", source = "usuarioDTO") // Mapea el cliente
     Parqueo parqueoCreateDTOAParqueo(ParqueoCreateDTO parqueoCreateDTO);
 
+
     @Named("mapParqueoDetalleCreateDTOToParqueoDetalle" )
-    default ParqueoDetalle mapParqueoDetalleCreateDTOToParqueoDetalle(ParqueoDetalleCreateDTO detalleDTO) {
+    default ParqueoDetalle mapParqueoDetalleCreateDTOToParqueoDetalle(ParqueoDetalleCreateDTO parqueoDetalleCreateDTO) {
         ParqueoDetalle detalle = new ParqueoDetalle();
-        detalle.setCantidad(detalleDTO.getCantidad());
-        detalle.setPreciovta(detalleDTO.getPreciovta());
-        detalle.setImporte(detalleDTO.getImporte());
-        detalle.setVehiculo(VehiculoMapper.instancia.vehiculoDTOAVehiculo(detalleDTO.getVehiculoDTO()));
+        detalle.setCantidad(parqueoDetalleCreateDTO.getCantidad());
+        detalle.setPreciovta(parqueoDetalleCreateDTO.getPreciovta());
+        detalle.setImporte(parqueoDetalleCreateDTO.getImporte());
+        detalle.setHoraingreso(parqueoDetalleCreateDTO.getHoraingreso());
+        detalle.setHorasalida(parqueoDetalleCreateDTO.getHorasalida());
+        detalle.setEstacionamiento(EstacionamientoMapper.instancia.estacionamientoDTOAEstacionamiento(parqueoDetalleCreateDTO.getEstacionamiento()));
+        detalle.setVehiculo(VehiculoMapper.instancia.vehiculoDTOAVehiculo(parqueoDetalleCreateDTO.getVehiculoDTO()));
         return detalle;
     }
+
+
+
+
+
+
+
+
+//    @Named("mapParqueoDetalleDTOToParqueoDetalle" )
+//    default ParqueoDetalle mapParqueoDetalleDTOToParqueoDetalle(ParqueoDetalleDTO detalleDTO) {
+//        ParqueoDetalle detalle = new ParqueoDetalle();
+//        detalle.setId(detalleDTO.getId());
+//        detalle.setCantidad(detalleDTO.getCantidad());
+//        detalle.setPreciovta(detalleDTO.getPreciovta());
+//        detalle.setImporte(detalleDTO.getImporte());
+//        detalle.setHoraingreso(detalleDTO.getHoraingreso());
+//        detalle.setHorasalida(detalleDTO.getHorasalida());
+//        detalle.setEstacionamiento(EstacionamientoMapper.instancia.estacionamientoDTOAEstacionamiento(detalleDTO.getEstacionamiento()));
+//        detalle.setVehiculo(VehiculoMapper.instancia.vehiculoDTOAVehiculo(detalleDTO.getVehiculoDTO()));
+//        return detalle;
+//    }
 }

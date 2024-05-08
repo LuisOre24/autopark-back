@@ -63,4 +63,13 @@ public class ClienteServiceImpl implements IClienteService {
             throw new NoSuchElementException("No se pudo realizar la eliminación para el ID proporcionado");
         }
     }
+
+    @Override
+    public ClienteDTO buscarClienteDocumento(String nroDocumento) {
+        Cliente cliente = clienteRepository.buscarClienteDocumento(nroDocumento);
+        ClienteDTO clienteDTO = ClienteMapper.instancia.clienteAClienteDTO(cliente);
+        return clienteDTO;
+    }
+
+
 }

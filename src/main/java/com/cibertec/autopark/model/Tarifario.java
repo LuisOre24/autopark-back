@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "tb_tafirafio")
+@Table(name = "tb_tarifario")
 public class Tarifario {
 
     @Id

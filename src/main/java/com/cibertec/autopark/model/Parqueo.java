@@ -8,6 +8,7 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -32,7 +33,7 @@ public class Parqueo {
     private Cliente cliente;
 
     @OneToMany(mappedBy = "parqueo")
-    private Set<ParqueoDetalle> parqueoDetalle;
+    private List<ParqueoDetalle> parqueoDetalle;
 
     @ManyToOne
     @JoinColumn(name = "id_usuario")

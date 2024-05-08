@@ -12,5 +12,5 @@ public interface IUsuarioService {
     UsuarioDTO registrarUsuario(UsuarioCreateDTO usuarioCreateDTO);
     UsuarioDTO actualizarUsuario(UsuarioDTO usuarioUpdateDTO);
     String eliminarUsuario(Integer id);
-    
+    UsuarioDTO usuarioPorUser(String usuario);
 }

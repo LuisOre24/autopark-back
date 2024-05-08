@@ -29,7 +29,7 @@ public interface VehiculoMapper {
 
     @Mapping(target="tipoVehiculo", source = "tipoVehiculoDTO")
     @Mapping(target="marca", source = "marcaDTO")
-    @Mapping(target = "cliente", source = "clienteDTO")
+    @Mapping(target ="cliente", source = "clienteDTO")
     Vehiculo vehiculoUpdateDTOAVehiculo(VehiculoUpdateDTO vehiculoUpdateDTO);
 
     @Mapping(target = "tipoVehiculoDTO", source = "tipoVehiculo")

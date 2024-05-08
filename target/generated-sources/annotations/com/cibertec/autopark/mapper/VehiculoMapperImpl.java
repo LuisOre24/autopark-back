@@ -16,7 +16,7 @@ import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-05-05T17:15:20-0500",
+    date = "2024-05-08T02:26:44-0500",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.11 (Eclipse Adoptium)"
 )
 public class VehiculoMapperImpl implements VehiculoMapper {
@@ -141,7 +141,6 @@ public class VehiculoMapperImpl implements VehiculoMapper {
         clienteDTO.setNombres( cliente.getNombres() );
         clienteDTO.setApePaterno( cliente.getApePaterno() );
         clienteDTO.setApeMaterno( cliente.getApeMaterno() );
-        clienteDTO.setFechaNacimiento( cliente.getFechaNacimiento() );
         clienteDTO.setEmail( cliente.getEmail() );
 
         return clienteDTO;
@@ -185,7 +184,6 @@ public class VehiculoMapperImpl implements VehiculoMapper {
         cliente.setNombres( clienteDTO.getNombres() );
         cliente.setApePaterno( clienteDTO.getApePaterno() );
         cliente.setApeMaterno( clienteDTO.getApeMaterno() );
-        cliente.setFechaNacimiento( clienteDTO.getFechaNacimiento() );
         cliente.setEmail( clienteDTO.getEmail() );
 
         return cliente;

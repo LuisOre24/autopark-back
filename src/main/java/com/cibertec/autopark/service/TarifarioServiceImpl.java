@@ -53,4 +53,11 @@ public class TarifarioServiceImpl implements ITarifarioService{
             throw new NoSuchElementException("No se pudo realizar la eliminacion por Id");
         }
     }
+
+    @Override
+    public TarifarioDTO tarifaPorTVehiculo(Integer id) {
+        Tarifario tarifario = tarifarioRepository.tarifaPorTVehiculo(id);
+        TarifarioDTO tarifarioDTO = TarifarioMapper.instancia.TarifarioATarifarioDTO(tarifario);
+        return tarifarioDTO;
+    }
 }

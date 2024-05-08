@@ -44,4 +44,10 @@ public class ClienteController {
         String text =IClienteService.eliminarCliente(clienteId);
         return new ResponseEntity<>( HttpStatus.OK);
     }
+
+    @GetMapping("clientes/buscar/{documento}")
+    public ResponseEntity<?> buscarClienteDocumento(@PathVariable("documento") String documento){
+        ClienteDTO cliente = IClienteService.buscarClienteDocumento(documento);
+        return new ResponseEntity<>(cliente, HttpStatus.OK);
+    }
 }

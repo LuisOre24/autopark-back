@@ -2,6 +2,7 @@ package com.cibertec.autopark.controller;
 
 import com.cibertec.autopark.dtos.TarifarioCreateDTO;
 import com.cibertec.autopark.dtos.TarifarioDTO;
+import com.cibertec.autopark.model.Tarifario;
 import com.cibertec.autopark.service.ITarifarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -43,4 +44,10 @@ public class TarifarioController {
         return new ResponseEntity<>( HttpStatus.OK);
     }
 
+    @GetMapping("tarifarios/buscar/{id}")
+    public ResponseEntity<TarifarioDTO> buscarTarifa(@PathVariable("id") Integer id){
+        TarifarioDTO tarifa = ITarifarioService.obtenerTarifarioPorId(id);
+
+        return new ResponseEntity<TarifarioDTO>(tarifa, HttpStatus.OK);
+    }
 }

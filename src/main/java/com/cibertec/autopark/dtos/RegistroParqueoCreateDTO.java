@@ -1,10 +1,11 @@
 package com.cibertec.autopark.dtos;
 
-import com.cibertec.autopark.model.Vehiculo;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
-@Data
+@Getter
+@Setter
 public class RegistroParqueoCreateDTO {
 
     private VehiculoDTO vehiculoDTO;

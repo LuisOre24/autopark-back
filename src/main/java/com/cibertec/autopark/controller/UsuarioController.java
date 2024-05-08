@@ -43,4 +43,10 @@ public class UsuarioController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @GetMapping("/usuarios/buscarusuario/{user}")
+    public ResponseEntity<UsuarioDTO> usuarioPorUsuario(@PathVariable("user") String usuario){
+        UsuarioDTO usuarioDTO = IUsuarioService.usuarioPorUser(usuario);
+        return new ResponseEntity<UsuarioDTO>(usuarioDTO, HttpStatus.OK);
+    }
+
 }

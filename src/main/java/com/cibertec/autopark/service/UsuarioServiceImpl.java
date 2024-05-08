@@ -45,10 +45,8 @@ public class UsuarioServiceImpl implements IUsuarioService{
         //newUser.setNroDocumento(usuario.getNroDocumento());
         //newUser.setUsername(usuario.getUsername());
         //newUser.setPassword(passwordEncoder.encode(usuario.getPassword()));
-        System.out.println(passwordEncoder.encode(usuario.getPassword()));
         usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
         Usuario respuestaEntity=usuarioRepository.save(usuario);
-        System.out.println("entra en registrar");
         return UsuarioMapper.instancia.usuarioAUsuarioDTO(respuestaEntity);
     }
 
@@ -71,5 +69,11 @@ public class UsuarioServiceImpl implements IUsuarioService{
             throw new NoSuchElementException("No se pudo realizar la eliminacion por Id");
         }
     }
-    
+
+    @Override
+    public UsuarioDTO usuarioPorUser(String usuario) {
+        Optional<Usuario> user = usuarioRepository.findByUsername(usuario);
+        return user.map(UsuarioMapper.instancia::usuarioAUsuarioDTO).orElse(null);
+    }
+
 }
