@@ -13,4 +13,5 @@ public interface IMarcaService {
     MarcaDTO registrarMarca(MarcaCreateDTO marcaCreateDTO);
     MarcaDTO actualizarMarca(MarcaUpdateDTO marcaUpdateDTO);
     String eliminarMarca(Integer id);
+    String generarPdftoBase24();
 }

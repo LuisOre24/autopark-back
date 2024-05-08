@@ -11,5 +11,6 @@ public interface IParqueoService {
     List<ParqueoDTO>  listarParqueos();
     ParqueoDTO obtenerParqueoPorID(long id);
     ParqueoResponseDTO registrarParqueo(ParqueoCreateDTO parqueoCreateDTO);
+    String generarPdftoBase24();
 }
 

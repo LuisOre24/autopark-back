@@ -13,4 +13,5 @@ public interface IVehiculoService {
     VehiculoDTO actualizarVehiculo(VehiculoUpdateDTO vehiculoUpdateDTO);
     String eliminarVehiculo(Integer id);
     VehiculoDTO buscarPlaca(String placa);
+    String generarPdftoBase24();
 }

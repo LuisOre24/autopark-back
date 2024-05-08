@@ -6,9 +6,15 @@ import com.cibertec.autopark.dtos.ClienteUpdateDTO;
 import com.cibertec.autopark.mapper.ClienteMapper;
 import com.cibertec.autopark.model.Cliente;
 import com.cibertec.autopark.repository.ClienteRepository;
+import com.itextpdf.html2pdf.ConverterProperties;
+import com.itextpdf.html2pdf.HtmlConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
 
+import java.io.ByteArrayOutputStream;
+import java.util.Base64;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -18,6 +24,13 @@ public class ClienteServiceImpl implements IClienteService {
 
     @Autowired
     private ClienteRepository clienteRepository;
+
+
+    private final TemplateEngine templateEngine;
+
+    public ClienteServiceImpl(TemplateEngine templateEngine) {
+        this.templateEngine = templateEngine;
+    }
 
     @Override
     public List<ClienteDTO> listarClientes() {
@@ -69,6 +82,21 @@ public class ClienteServiceImpl implements IClienteService {
         Cliente cliente = clienteRepository.buscarClienteDocumento(nroDocumento);
         ClienteDTO clienteDTO = ClienteMapper.instancia.clienteAClienteDTO(cliente);
         return clienteDTO;
+    }
+
+    @Override
+    public String generarPdftoBase24() {
+
+        List<ClienteDTO> listaClientes= listarClientes();
+        Context context = new Context();
+        context.setVariable("listaClientes", listaClientes);;
+        String htmlContent = templateEngine.process("report-clientes", context);
+        ByteArrayOutputStream outputStream= new ByteArrayOutputStream();
+        ConverterProperties converterProperties = new ConverterProperties();
+        HtmlConverter.convertToPdf(htmlContent,outputStream,converterProperties);
+        byte[]pdfBytes = outputStream.toByteArray();
+        String base64content= Base64.getEncoder().encodeToString(pdfBytes);
+        return base64content;
     }
 
 

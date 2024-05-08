@@ -50,4 +50,9 @@ public class ClienteController {
         ClienteDTO cliente = IClienteService.buscarClienteDocumento(documento);
         return new ResponseEntity<>(cliente, HttpStatus.OK);
     }
+
+    @GetMapping("clientes/reporte")
+    public ResponseEntity<String> generarReportBase64() throws Exception{
+        return new ResponseEntity<>(IClienteService.generarPdftoBase24(),HttpStatus.OK);
+    }
 }

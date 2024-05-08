@@ -14,4 +14,6 @@ public interface IClienteService {
     String eliminarCliente(long id);
 
     ClienteDTO buscarClienteDocumento(String nroDocumento);
+
+    String generarPdftoBase24();
 }

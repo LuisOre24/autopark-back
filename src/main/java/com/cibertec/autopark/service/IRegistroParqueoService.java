@@ -14,5 +14,6 @@ public interface IRegistroParqueoService {
     RegistroParqueoDTO actualizarRegistroParqueo(RegistroParqueoDTO registroParqueoUpdateDTO);
     String eliminarRegistroParqueo(Integer id);
     String salidaVehiculo(RegistroParqueoUpdateDTO registroParqueoUpdateDTO);
+    String generarPdftoBase24();
 
 }

@@ -13,5 +13,6 @@ public interface ITarifarioService {
     TarifarioDTO actualizarTarifario(TarifarioDTO tarifarioUpdateDTO);
     String eliminarTarifario(Integer id);
     TarifarioDTO tarifaPorTVehiculo(Integer id);
+    String generarPdftoBase24();
     
 }
